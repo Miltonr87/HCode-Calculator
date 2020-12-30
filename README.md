@@ -4,7 +4,7 @@
 
 ### About
 
-Calculator developed as an exercise from [HCode Training](https://www.hcode.com.br)in order to learn the most recent changes in Ecmascript and expand knowledge in Object Oriented Programming (OOP) before move to ReactJS with efficiency. The calculator performs several conversions in addition to entering the current date and time. 
+Calculator developed as an exercise from [HCode Training](https://www.hcode.com.br) in order to learn the most recent changes in Ecmascript and expand knowledge in Object Oriented Programming (OOP) before move to ReactJS with efficiency. The calculator performs several conversions in addition to entering the current date and time. 
 
 ### Getting Started
 
