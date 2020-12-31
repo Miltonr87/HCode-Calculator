@@ -32,6 +32,8 @@ class CalcController {
             });
     }
 
+// All Operations Starts Here:
+
     clearAll() {
         this._operation = [];
     }
@@ -40,11 +42,70 @@ class CalcController {
         this._operation.pop();
     }
 
+    getLastOperation() {
+        return this._operation[this._operation.length-1];
+    }
+
+    setLastOperation(value) {
+        this._operation[this._operation.length-1] = value;
+    }
+
+    isOperator(value) {
+        // Is Operator? Search in every calculator symbol and take the Index
+        return (['+', '-', '*', '%', '/'].indexOf(value) > -1);
+    }
+
+    pushOperation(value) {
+        this._operation.push(value);
+
+        if(this._operation.length > 3) {
+
+            this.calc()
+           
+        }
+    }
+
+    calc() {
+        let last = this._operation.pop();
+
+        let result = eval(this.operation.join(""));
+
+        this._operation = [result, last];
+    }
+
+    setLastNumberToDisplay() {
+
+    }
+    
     addOperation(value) {
 
-        this._operation.push(value);
-        console.log(this._operation);
-    }
+        if (isNaN(this.getLastOperation())) {
+            //String
+            if (this.isOperator(value)) {
+                // Change the Operator
+                this.setLastOperation(value);
+            } else if(isNaN(value)) {
+                console.log("outra coisa", value);
+            } else {
+                this.pushOperation(value);
+            }
+
+        } else {
+            //Number?
+            if (this.isOperator(value)) {
+                this.pushOperation(value);
+            } else {
+
+                let newValue = this.getLastOperation().toString() + value.toString();
+                this.setLastOperation(parseInt(newValue));
+
+                // Show in Display
+                this.setLastNumberToDisplay();
+            }
+
+        }
+        
+    } 
 
     setError() {
         this.displayCalc = "Error!";
@@ -62,27 +123,31 @@ class CalcController {
                 break;
 
             case 'plus':
-                
+                this.addOperation('+');
                 break;
 
             case 'minus':
-                
+                this.addOperation('-');
                 break;
 
             case 'division':
-                
+                this.addOperation('/');
                 break;
 
             case 'multiplication':
-                
+                this.addOperation('*');
                 break;
 
             case 'percent':
-                
+                this.addOperation('%');
                 break;
 
             case 'equal':
                 
+                break;
+
+            case 'dot':
+                this.addOperation('.');
                 break;
 
             case '0':
